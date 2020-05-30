@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-G:\forth-sem-OOP\eHospital\eHospital\obj\Debug\
+C:\Users\hp\Documents\GitHub\EDurka\eHospital\obj\Debug\
 eHospital
 none
 false
 DEBUG;TRACE
-G:\forth-sem-OOP\eHospital\eHospital\App.xaml
+C:\Users\hp\Documents\GitHub\EDurka\eHospital\App.xaml
 10-2077596476
 
 20-200521674
-21-1642181834
+211059964758
 ButtonTheme.xaml;ErrorWindow.xaml;MainWindow.xaml;NewDoctorWindow.xaml;NewPatientWindow.xaml;Pages\PageDoctors.xaml;Pages\PageMe.xaml;Pages\PagePatients.xaml;Pages\PageTreatment.xaml;WorkingWindow.xaml;
 
 False

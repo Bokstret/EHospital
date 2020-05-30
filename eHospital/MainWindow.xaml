@@ -1,0 +1,145 @@
+﻿<Window x:Class="eHospital.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:eHospital"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="320"
+        AllowsTransparency="True" Background="Transparent"
+        WindowStyle="None" ResizeMode="NoResize"
+        WindowStartupLocation ="CenterScreen"
+        MouseLeftButtonDown="Window_MouseLeftButtonDown">
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+
+            <Border CornerRadius="10" Grid.RowSpan="2"
+                    BorderThickness="1"
+                    BorderBrush="LightGray">
+                <Border.Background>
+                    <SolidColorBrush Color="White"/>
+                </Border.Background>
+            </Border>
+
+
+            <StackPanel>
+                <Button Name="CloseButton"
+                        Style="{StaticResource TransparentButton}"
+                        Margin="0, 12, 12, 0"
+                        HorizontalAlignment="Right"
+                        Click="CloseButton_MouseLeftButtonDown">
+                    <iconPacks:PackIconMaterial Kind="Close"/>
+                </Button>
+
+
+                <StackPanel VerticalAlignment="Center"
+                            Margin="0, 35, 0, 0">
+                    <Image Source="Images/madhouse.jpg" Width="80"/>
+                    <TextBlock Text="eDurka System"
+                               FontWeight="Light"
+                               FontFamily="helvetica"
+                               FontSize="22"
+                               Foreground="DarkGray"
+                               HorizontalAlignment="Center"
+                               Margin="0, 25, 0, 0"/>
+                </StackPanel>
+            </StackPanel>
+
+
+            <StackPanel Grid.Row="1">
+                <StackPanel Orientation="Horizontal"
+                            Margin="0, 20, 0, 0">
+                    <TextBox Name="LoginField"
+                             FontFamily="helvetica"
+                             FontWeight="Light"
+                             Text="Login"
+                             FontSize="20"
+                             HorizontalAlignment="Center"
+                             Foreground="DarkGray"
+                             Background="Transparent"
+                             BorderThickness="0"
+                             Width="233"
+                             HorizontalContentAlignment="Left"
+                             Opacity="0.5"
+                             Height="25"
+                             Margin="34, 0, 0, 0"
+                             GotFocus="LoginField_GotFocus"
+                             LostFocus="LoginField_LostFocus"/>
+                    <iconPacks:PackIconMaterial Kind="Account"
+                                                VerticalAlignment="Center"
+                                                HorizontalAlignment="Center"
+                                                Foreground="#5485eb"/>
+                </StackPanel>
+                <Border Width="250"
+                        Height="2"
+                        Background="DarkGray"
+                        Opacity="0.5"/>
+
+                <StackPanel Orientation="Horizontal" Margin="0, 20, 0, 0">
+                    <PasswordBox Name="PasswordField"
+                                 FontFamily="helvetica"
+                                 FontWeight="Light"
+                                 Password="Password"
+                                 FontSize="20"
+                                 HorizontalAlignment="Center"
+                                 Foreground="DarkGray"
+                                 Background="Transparent"
+                                 BorderThickness="0"
+                                 Width="233"
+                                 HorizontalContentAlignment="Left"
+                                 Opacity="0.5"
+                                 Height="25"
+                                 Margin="34, 0, 0, 0"
+                                 GotFocus="PasswordField_GotFocus"
+                                 LostFocus="PasswordField_LostFocus"/>
+                    <iconPacks:PackIconMaterial Kind="FormTextboxPassword"
+                                                VerticalAlignment="Center"
+                                                HorizontalAlignment="Center"
+                                                Foreground="#5485eb"/>
+                </StackPanel>
+                <Border Width="250"
+                        Height="2"
+                        Background="DarkGray"
+                        Opacity="0.5"/>
+
+
+                <Button Name="LoginButton" 
+                        Width="250"
+                        Height="30"
+                        Content="LOGIN"
+                        Style="{StaticResource ModernButton}"
+                        Margin="0, 45, 0, 0"
+                        Click="LoginFunction"/>
+
+
+                <TextBlock FontWeight="Light"
+                           FontFamily="helvetica"
+                           FontSize="12"
+                           Foreground="DarkGray"
+                           HorizontalAlignment="Center"
+                           Margin="0, 25, 0, 0">
+                    Powered by <Bold>Team Viplash</Bold>
+                </TextBlock>
+            </StackPanel>
+
+            <TextBlock Grid.Row="2"
+                       Name="wrongDataText"
+                       Visibility="Collapsed"
+                       Margin="0, 0, 0 97"
+                       Text="Wrong login or password!"
+                       Foreground="Red"
+                       FontFamily="helvetica"
+                       FontWeight="Regular"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Bottom"
+                       FontSize="18"/>
+
+        </Grid>
+    </Grid>
+</Window>

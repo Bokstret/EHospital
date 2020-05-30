@@ -1,0 +1,235 @@
+﻿<Page x:Class="eHospital.Pages.PageMe"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:eHospital.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PageMe"
+      FontSize="20"
+      Background="Transparent"
+      FontFamily="helvetica"
+      x:Name="PageMeName">
+
+    <StackPanel>
+        <Grid Margin="20">
+            <Grid.Effect>
+                <DropShadowEffect Opacity=".3"
+                                  BlurRadius="15"/>
+            </Grid.Effect>
+            <Border CornerRadius="10"
+                BorderThickness="1">
+                <Border.Background>
+                    <SolidColorBrush Color="White"/>
+                </Border.Background>
+            </Border>
+
+            <StackPanel Margin="15">
+                <TextBlock x:Name="docName"
+                   HorizontalAlignment="Center"
+                   Text="{Binding Path=DocNameAndRank}"
+                   FontSize="34"
+                   FontWeight="Light"/>
+                <TextBlock Text="Doctor Info:"
+                   FontWeight="Light"
+                   Margin="0, 15, 0, 0"
+                   />
+                <StackPanel HorizontalAlignment="Center"
+                            Margin="0, 10, 0, 0">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock x:Name="docBirthField"
+                                   Text="Birthdate: "
+                                   FontWeight="Light"
+                                   FontSize="16"/>
+                        <TextBlock DataContext="{Binding CurrentDoc}"
+                                   Text="{Binding Birthdate}"
+                                   FontWeight="Light"
+                                   FontSize="16"
+                                   Margin="20, 0, 0, 0"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"
+                                Margin="0, 10, 0, 0">
+                        <TextBlock Text="Cabinet number:"
+                           FontWeight="Light"
+                           FontSize="16"/>
+                        <StackPanel>
+                            <TextBox x:Name="cabinetNumField" 
+                                     FontWeight="Light"
+                                     DataContext="{Binding CurrentDoc}"
+                                     Text="{Binding Cabinet}"
+                                     FontSize="16"
+                                     Background="Transparent"
+                                     BorderThickness="0"
+                                     Width="150"
+                                     Margin="20, 0, 20, 0"/>
+                            <Border Width="150"
+                            Height="2"
+                            Background="Black"
+                            Opacity="0.5"/>
+                        </StackPanel>
+                        <Button x:Name="changeCabinetButton"
+                                Command="{Binding SaveDoc}"
+                                Style="{StaticResource ModernButton}"
+                                Content="Save"
+                                Width="80"
+                                FontSize="16"
+                        />
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+
+        <Grid Margin="20, 0, 20, 10">
+            <Grid.Effect>
+                <DropShadowEffect Opacity=".3"
+                                  BlurRadius="15"/>
+            </Grid.Effect>
+            <Border CornerRadius="10"
+                BorderThickness="1">
+                <Border.Background>
+                    <SolidColorBrush Color="White"/>
+                </Border.Background>
+            </Border>
+            <TextBlock Text="Your patients:"
+                       FontWeight="Light"
+                       Margin="15"
+                       />
+        </Grid>
+        <ListView x:Name="sesDocPatientsList"
+                  DataContext="{Binding CurrentDoc}"
+                  ItemsSource="{Binding Patients}"
+                 Background="Transparent"
+                 BorderThickness="0"
+                 HorizontalAlignment="Stretch"
+                 HorizontalContentAlignment="Stretch"
+                 Margin="20, 0, 20, 0"
+                 FontFamily="helvetica"
+                 FontWeight="Light"
+                 FontSize="16">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border CornerRadius="10"
+                            BorderThickness="1">
+                        <Border.Background>
+                            <SolidColorBrush Color="White"/>
+                        </Border.Background>
+                        <Border.Effect>
+                            <DropShadowEffect Opacity=".3"
+                                  BlurRadius="15"/>
+                        </Border.Effect>
+
+                        <StackPanel HorizontalAlignment="Stretch">
+                            <TextBlock Text="{Binding Path=Name}"
+                                       HorizontalAlignment="Center"
+                                       Margin="5"
+                                       FontSize="34"/>
+                            <StackPanel Orientation="Horizontal"
+                                        HorizontalAlignment="Center"
+                                        Margin="0, 0, 0, 15">
+                                <StackPanel>
+                                    <TextBlock Text="Patient birthdate:"
+                                                   FontWeight="Light"
+                                                   FontSize="16"
+                                               Margin="5, 0, 5, 3"
+                                               HorizontalAlignment="Right"/>
+                                    <TextBlock Text="Patient cell number:"
+                                                   FontWeight="Light"
+                                                   FontSize="16"
+                                               Margin="5, 0, 5, 3"
+                                               HorizontalAlignment="Right"/>
+                                    <TextBlock Text="Patient disease:"
+                                                   FontWeight="Light"
+                                                   FontSize="16"
+                                               Margin="5, 0, 5, 3"
+                                               HorizontalAlignment="Right"/>
+                                    <TextBlock Text="Patient info:"
+                                                   FontWeight="Light"
+                                                   FontSize="16"
+                                               Margin="5, 0, 5, 3"
+                                               HorizontalAlignment="Right"/>
+                                </StackPanel>
+
+                                <StackPanel HorizontalAlignment="Left">
+                                    <TextBox FontWeight="Light"
+                                             Text="{Binding Path=Birthdate}"
+                                             FontSize="16"
+                                             Background="Transparent"
+                                             BorderThickness="0"
+                                             Width="175"
+                                             Margin="5, 0, 5, 0"/>
+                                    <Border Width="175"
+                                                    Height="2"
+                                                    Background="Black"
+                                                    Opacity="0.5"/>
+                                    <TextBox FontWeight="Light"
+                                                     Text="{Binding Path=Room_number}"
+                                                     FontSize="16"
+                                                     Background="Transparent"
+                                                     BorderThickness="0"
+                                                     Width="175"
+                                                     Margin="5, 0, 5, 0"/>
+                                    <Border Width="175"
+                                                    Height="2"
+                                                    Background="Black"
+                                                    Opacity="0.5"/>
+                                    <TextBox FontWeight="Light"
+                                                     Text="{Binding Path=Diseases}"
+                                                     FontSize="16"
+                                                     Background="Transparent"
+                                                     BorderThickness="0"
+                                                     Width="175"
+                                                     Margin="5, 0, 5, 0"/>
+                                    <Border Width="175"
+                                                    Height="2"
+                                                    Background="Black"
+                                                    Opacity="0.5"/>
+                                    <TextBox FontWeight="Light"
+                                                     Text="{Binding Path=Info}"
+                                                     FontSize="16"
+                                                     Background="Transparent"
+                                                     BorderThickness="0"
+                                                     Width="175"
+                                                     Margin="5, 0, 5, 0"/>
+                                    <Border Width="175"
+                                                    Height="2"
+                                                    Background="Black"
+                                                    Opacity="0.5"/>
+                                </StackPanel>
+                                <StackPanel>
+                                    <Button x:Name="savePatChangesBtn" 
+                                        Style="{StaticResource ModernButton}"
+                                        Content="Save Changes"
+                                        Width="115"
+                                        Height="23"
+                                        FontSize="16"
+                                        Margin="20, 0, 0, 0"
+                                        Command="{Binding ElementName=PageMeName, Path=DataContext.SaveCurrentPat}"
+                                        CommandParameter="{Binding ElementName=savePatChangesBtn, Path=DataContext}"/>
+                                    <Button x:Name="discardPatBtn" 
+                                        Style="{StaticResource ModernButton}"
+                                        Content="Discard"
+                                        Width="115"
+                                        Height="23"
+                                        FontSize="16"
+                                        Margin="20, 10, 0, 0"
+                                        Command="{Binding ElementName=PageMeName, Path=DataContext.DiscardPat}"
+                                        CommandParameter="{Binding ElementName=discardPatBtn, Path=DataContext}"/>
+                                    <Button x:Name="writeOutPatientBtn"
+                                        Style="{StaticResource ModernButton}"
+                                        Content="Write out"
+                                        Width="115"
+                                        Height="23"
+                                        FontSize="16"
+                                        Margin="20, 10, 0, 0"
+                                        Command="{Binding ElementName=PageMeName, Path=DataContext.WriteOutPat}"
+                                        CommandParameter="{Binding ElementName=writeOutPatientBtn, Path=DataContext}"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackPanel>
+</Page>

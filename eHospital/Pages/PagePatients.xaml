@@ -1,0 +1,158 @@
+﻿<Page x:Class="eHospital.Pages.PagePatients"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:eHospital.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      FontSize="20"
+      Background="Transparent"
+      FontFamily="helvetica"
+      Title="PagePatients"
+      x:Name="PagePatientsName">
+
+    <StackPanel>
+        <Grid Margin="20">
+            <Grid.Effect>
+                <DropShadowEffect Opacity=".3"
+                                  BlurRadius="15"/>
+            </Grid.Effect>
+            <Border CornerRadius="10"
+                BorderThickness="1">
+                <Border.Background>
+                    <SolidColorBrush Color="White"/>
+                </Border.Background>
+            </Border>
+
+            <TextBlock Text="Patients List"
+                       TextAlignment="Center"
+                       FontWeight="Light"
+                       FontSize="36"
+                       Margin="15"
+                       />
+            <Button x:Name="createNewPat" 
+                    Style="{StaticResource ModernButton}"
+                    Content="Add patient"
+                    HorizontalAlignment="Right"
+                    Width="115"
+                    Height="23"
+                    Margin="0, 0, 20, 0"
+                    FontSize="16"
+                    Click="createNewPat_Click"/>
+        </Grid>
+
+        <ListView x:Name="allPatientsListView"
+                  ItemsSource="{Binding AllPatients}"
+                  Background="Transparent"
+                  BorderThickness="0"
+                  HorizontalAlignment="Stretch"
+                  HorizontalContentAlignment="Stretch"
+                  Margin="20, 0, 20, 0"
+                  FontFamily="helvetica"
+                  FontWeight="Light"
+                  FontSize="16">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border CornerRadius="10"
+                            BorderThickness="1">
+                        <Border.Background>
+                            <SolidColorBrush Color="White"/>
+                        </Border.Background>
+                        <Border.Effect>
+                            <DropShadowEffect Opacity=".3"
+                                              BlurRadius="15"/>
+                        </Border.Effect>
+
+                        <StackPanel HorizontalAlignment="Stretch">
+                            <TextBlock Text="{Binding Path=Name}"
+                                       HorizontalAlignment="Center"
+                                       Margin="5"
+                                       FontSize="34"/>
+                            <StackPanel Orientation="Horizontal"
+                                        HorizontalAlignment="Center"
+                                        Margin="0, 0, 0, 15">
+                                <StackPanel>
+                                    <TextBlock Text="Patient birthdate:"
+                                               FontWeight="Light"
+                                               FontSize="16"
+                                               Margin="5, 0, 5, 3"
+                                               HorizontalAlignment="Right"/>
+                                    <TextBlock Text="Patient cell number:"
+                                               FontWeight="Light"
+                                               FontSize="16"
+                                               Margin="5, 0, 5, 3"
+                                               HorizontalAlignment="Right"/>
+                                    <TextBlock Text="Patient disease:"
+                                               FontWeight="Light"
+                                               FontSize="16"
+                                               Margin="5, 0, 5, 3"
+                                               HorizontalAlignment="Right"/>
+                                    <TextBlock Text="Patient info:"
+                                               FontWeight="Light"
+                                               FontSize="16"
+                                               Margin="5, 0, 5, 3"
+                                               HorizontalAlignment="Right"/>
+                                </StackPanel>
+
+                                <StackPanel HorizontalAlignment="Left">
+                                    <TextBlock FontWeight="Light"
+                                               Text="{Binding Path=Birthdate}"
+                                               FontSize="16"
+                                               Background="Transparent"
+                                               Width="175"
+                                               Margin="5, 0, 5, 0"/>
+                                    <Border Width="175"
+                                            Height="2"
+                                            Background="Black"
+                                            Opacity="0.5"/>
+                                    <TextBlock FontWeight="Light"
+                                               Text="{Binding Path=Room_number}"
+                                               FontSize="16"
+                                               Background="Transparent"
+                                               Width="175"
+                                               Margin="5, 0, 5, 0"/>
+                                    <Border Width="175"
+                                            Height="2"
+                                            Background="Black"
+                                            Opacity="0.5"/>
+                                    <TextBlock FontWeight="Light"
+                                               Text="{Binding Path=Diseases}"
+                                               FontSize="16"
+                                               Background="Transparent"
+                                               Width="175"
+                                               Margin="5, 0, 5, 0"/>
+                                    <Border Width="175"
+                                            Height="2"
+                                            Background="Black"
+                                            Opacity="0.5"/>
+                                    <TextBlock FontWeight="Light"
+                                               Text="{Binding Path=Info}"
+                                               FontSize="16"
+                                               Background="Transparent"
+                                               Width="175"
+                                               Margin="5, 0, 5, 0"/>
+                                    <Border Width="175"
+                                            Height="2"
+                                            Background="Black"
+                                            Opacity="0.5"/>
+                                </StackPanel>
+                                <StackPanel>
+                                    <Button x:Name="takePatBtn" 
+                                            Style="{StaticResource ModernButton}"
+                                            Content="Take Patient"
+                                            Width="115"
+                                            Height="23"
+                                            FontSize="16"
+                                            Margin="20, 20, 0, 0"
+                                            Command="{Binding ElementName=PagePatientsName, Path=DataContext.TakeSelectedPatient}"
+                                            CommandParameter="{Binding ElementName=takePatBtn, Path=DataContext}"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackPanel>
+</Page>
